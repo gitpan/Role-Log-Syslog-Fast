@@ -23,4 +23,4 @@ requires:
 resources:
   bugtracker: http://github.com/maluco/Role-Log-Syslog-Fast/issues
   repository: git://github.com/maluco/Role-Log-Syslog-Fast.git
-version: 0.013
+version: 0.13

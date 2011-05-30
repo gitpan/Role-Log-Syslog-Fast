@@ -7,7 +7,7 @@ use Log::Syslog::Fast ':all';
 
 # ABSTRACT: A Logging role for L<Moose> on L<Log::Syslog::Fast>
 
-our $VERSION = '0.013'; # VERSION
+our $VERSION = '0.13'; # VERSION
 
 has '_proto' => (
     is      => 'rw',
@@ -83,7 +83,7 @@ Role::Log::Syslog::Fast - A Logging role for L<Moose> on L<Log::Syslog::Fast>
 
 =head1 VERSION
 
-version 0.013
+version 0.13
 
 =head1 SYNOPSIS
 

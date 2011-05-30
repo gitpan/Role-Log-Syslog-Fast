@@ -29,7 +29,7 @@ my %WriteMakefileArgs = (
     'Log::Syslog::Fast' => '0',
     'Moose::Role' => '0'
   },
-  'VERSION' => '0.013',
+  'VERSION' => '0.13',
   'test' => {
     'TESTS' => 't/*.t'
   }

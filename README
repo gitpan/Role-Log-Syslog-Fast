@@ -2,7 +2,7 @@ NAME
     Role::Log::Syslog::Fast - A Logging role for Moose on Log::Syslog::Fast
 
 VERSION
-    version 0.013
+    version 0.13
 
 SYNOPSIS
         {
