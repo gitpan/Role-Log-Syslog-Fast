@@ -1,15 +1,58 @@
 
-use inc::Module::Install '0.01';
+use strict;
+use warnings;
 
-name 'Role-Log-Syslog-Fast';
-all_from 'lib/Role/Log/Syslog/Fast.pm';
-license 'perl';
 
-build_requires 'Test::More';
 
-requires 'Moose' => 0.99;
-requires 'Log::Syslog::Fast' => 0.44;
+use ExtUtils::MakeMaker 6.30;
 
-auto_install;
-WriteAll;
+
+
+my %WriteMakefileArgs = (
+  'ABSTRACT' => 'A Logging role for L<Moose> on L<Log::Syslog::Fast>',
+  'AUTHOR' => 'Thiago Rondon <thiago@nsms.com.br>',
+  'BUILD_REQUIRES' => {
+    'English' => '0',
+    'File::Find' => '0',
+    'File::Temp' => '0',
+    'Moose' => '0',
+    'Test::More' => '0.88'
+  },
+  'CONFIGURE_REQUIRES' => {
+    'ExtUtils::MakeMaker' => '6.30'
+  },
+  'DISTNAME' => 'Role-Log-Syslog-Fast',
+  'EXE_FILES' => [],
+  'LICENSE' => 'perl',
+  'NAME' => 'Role::Log::Syslog::Fast',
+  'PREREQ_PM' => {
+    'Log::Syslog::Fast' => '0',
+    'Moose::Role' => '0'
+  },
+  'VERSION' => '0.013',
+  'test' => {
+    'TESTS' => 't/*.t'
+  }
+);
+
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
+
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
 

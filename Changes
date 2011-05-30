@@ -1,0 +1,4 @@
+* 0.13
+- Dist::Zill
+- sub { -f '/dev/log' ? '/dev/log' : '/dev/klog' } in _hostname
+
