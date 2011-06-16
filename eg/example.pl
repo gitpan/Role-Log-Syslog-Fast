@@ -1,9 +1,6 @@
 #!/usr/bin/env perl
 
-use strict;
-
 {
-
     package ExampleLog;
 
     use FindBin qw($Bin);
@@ -14,7 +11,6 @@ use strict;
 
     sub BUILD {
         my $self = shift;
-        $self->_hostname('/var/run/syslog');
         $self->_name('Example');
     }
 

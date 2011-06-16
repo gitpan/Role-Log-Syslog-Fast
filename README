@@ -2,7 +2,7 @@ NAME
     Role::Log::Syslog::Fast - A Logging role for Moose on Log::Syslog::Fast
 
 VERSION
-    version 0.13
+    version 0.14
 
 SYNOPSIS
         {
@@ -31,10 +31,6 @@ SYNOPSIS
 DESCRIPTION
     A logging role building a very lightweight wrapper to Log::Syslog::Fast
     for use with Moose classes.
-
-NAME
-    MooseX::Log::Syslog::Fast - A Logging role for Moose on
-    Log::Syslog::Fast
 
 METHOD
   log

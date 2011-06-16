@@ -3,11 +3,11 @@ package Role::Log::Syslog::Fast;
 
 use strict;
 use Moose::Role;
-use Log::Syslog::Fast ':all';
+use Log::Syslog::Fast 0.55 ':all';
+use List::Util qw(first);
 
-# ABSTRACT: A Logging role for L<Moose> on L<Log::Syslog::Fast>
-
-our $VERSION = '0.13'; # VERSION
+# ABSTRACT: A Logging role for Moose on Log::Syslog::Fast
+our $VERSION = '0.14'; # VERSION
 
 has '_proto' => (
     is      => 'rw',
@@ -19,7 +19,11 @@ has '_hostname' => (
     is      => 'rw',
     isa     => 'Str',
     lazy    => 1,
-    default => sub { -f '/dev/log' ? '/dev/log' : '/dev/klog' }
+    default => sub {
+        my $options = [ '/dev/log', '/dev/klog', '/var/run/syslog' ];
+        my $found = first {-r} @$options;
+        return $found if $found;
+    }
 );
 
 has '_port' => (
@@ -59,16 +63,15 @@ has '_logger' => (
     default => sub {
         my $self = shift;
         return Log::Syslog::Fast->new(
-            $self->_proto, $self->_hostname, $self->_port,
-            $self->_facility, $self->_severity, $self->_sender,
-            $self->_name);
+            $self->_proto,    $self->_hostname, $self->_port, $self->_facility,
+            $self->_severity, $self->_sender,   $self->_name
+        );
     }
 );
 
 sub log {
-    my ($self, $msg, $time) = @_;
-    return $time
-        ? $self->_logger->send($msg, $time) : $self->_logger->send($msg);
+    my ( $self, $msg, $time ) = @_;
+    return $time ? $self->_logger->send( $msg, $time ) : $self->_logger->send($msg);
 }
 
 1;
@@ -79,11 +82,11 @@ sub log {
 
 =head1 NAME
 
-Role::Log::Syslog::Fast - A Logging role for L<Moose> on L<Log::Syslog::Fast>
+Role::Log::Syslog::Fast - A Logging role for Moose on Log::Syslog::Fast
 
 =head1 VERSION
 
-version 0.13
+version 0.14
 
 =head1 SYNOPSIS
 
@@ -113,10 +116,6 @@ version 0.13
 =head1 DESCRIPTION
 
 A logging role building a very lightweight wrapper to L<Log::Syslog::Fast> for use with L<Moose> classes.
-
-=head1 NAME
-
-MooseX::Log::Syslog::Fast - A Logging role for L<Moose> on L<Log::Syslog::Fast>
 
 =head1 METHOD
 

@@ -9,15 +9,9 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'A Logging role for L<Moose> on L<Log::Syslog::Fast>',
+  'ABSTRACT' => 'A Logging role for Moose on Log::Syslog::Fast',
   'AUTHOR' => 'Thiago Rondon <thiago@nsms.com.br>',
-  'BUILD_REQUIRES' => {
-    'English' => '0',
-    'File::Find' => '0',
-    'File::Temp' => '0',
-    'Moose' => '0',
-    'Test::More' => '0.88'
-  },
+  'BUILD_REQUIRES' => {},
   'CONFIGURE_REQUIRES' => {
     'ExtUtils::MakeMaker' => '6.30'
   },
@@ -25,11 +19,8 @@ my %WriteMakefileArgs = (
   'EXE_FILES' => [],
   'LICENSE' => 'perl',
   'NAME' => 'Role::Log::Syslog::Fast',
-  'PREREQ_PM' => {
-    'Log::Syslog::Fast' => '0',
-    'Moose::Role' => '0'
-  },
-  'VERSION' => '0.13',
+  'PREREQ_PM' => {},
+  'VERSION' => '0.14',
   'test' => {
     'TESTS' => 't/*.t'
   }

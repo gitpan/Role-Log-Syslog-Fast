@@ -48,14 +48,7 @@ sub pmver {
     return sprintf('%-45s => %-10s%-15s%s', $module, $pmver, $wanted, "\n");
 }
 
-eval { $v .= pmver('English','any version') };
 eval { $v .= pmver('ExtUtils::MakeMaker','6.30') };
-eval { $v .= pmver('File::Find','any version') };
-eval { $v .= pmver('File::Temp','any version') };
-eval { $v .= pmver('Log::Syslog::Fast','any version') };
-eval { $v .= pmver('Moose','any version') };
-eval { $v .= pmver('Moose::Role','any version') };
-eval { $v .= pmver('Test::More','0.88') };
 
 
 

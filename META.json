@@ -1,10 +1,10 @@
 {
-   "abstract" : "A Logging role for L<Moose> on L<Log::Syslog::Fast>",
+   "abstract" : "A Logging role for Moose on Log::Syslog::Fast",
    "author" : [
       "Thiago Rondon <thiago@nsms.com.br>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200006, CPAN::Meta::Converter version 2.110440",
+   "generated_by" : "Dist::Zilla version 4.200007, CPAN::Meta::Converter version 2.110440",
    "license" : [
       "perl_5"
    ],
@@ -18,21 +18,6 @@
          "requires" : {
             "ExtUtils::MakeMaker" : "6.30"
          }
-      },
-      "runtime" : {
-         "requires" : {
-            "Log::Syslog::Fast" : 0,
-            "Moose::Role" : 0
-         }
-      },
-      "test" : {
-         "requires" : {
-            "English" : 0,
-            "File::Find" : 0,
-            "File::Temp" : 0,
-            "Moose" : 0,
-            "Test::More" : "0.88"
-         }
       }
    },
    "release_status" : "stable",
@@ -42,10 +27,10 @@
       },
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/maluco/Role-Log-Syslog-Fast.git",
+         "url" : "git://github.com/maluco/Role-Log-Syslog-Fast",
          "web" : "http://github.com/maluco/Role-Log-Syslog-Fast"
       }
    },
-   "version" : "0.13"
+   "version" : "0.14"
 }
 
